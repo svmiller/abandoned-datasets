@@ -1,6 +1,8 @@
 # Miscellaneous Abandoned Datasets
 
-These are data sets I've found that are perhaps necessary for replication, but not easily obtained, and might as well be abandoned. Reproducibility was not a strong norm in the discipline some 20 years ago or so. At most, you might get a `.sav` or `.dta` file on some faculty member's website (that is almost certainly no longer valid). If you're diligent at sleuthing, you can get it back.
+These are data sets I've found that are perhaps necessary for replication, but not easily obtained, and could well be abandoned if the people involved are long retired or have long since passed on. Reproducibility was not a strong norm in the discipline some 20 years ago or so. At most, you might get a `.sav` or `.dta` file on some faculty member's website (that is almost certainly no longer valid). If you're diligent at sleuthing (and lucky), you can get it back.
+
+(It's also likely that these appear on Dataverse. These are my efforts to retrace data sets that existed prior to Dataverse).
 
 ## Contents Include (So Far)
 
