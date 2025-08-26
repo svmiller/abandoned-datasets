@@ -1,0 +1,82 @@
+WEEDE.CBK
+
+Description of the WEEDE.ASC dataset. This file was created from the
+tables in the original Weede (1984) dataset, plus data taken from
+Arthur Banks' Cross-National Time Series dataset (ICPSR 7412).  All
+Banks variables are for the year 1970.  The last 7 variables are taken
+from Taylor's World Handbook of Social and Political Indicators III
+(ICPSR 7761).
+
+All data in WEEDE.ASC is tab-delimited, first row is variable names.
+
+-- Ken Benoit
+   kbenoit@harvard.edu
+   January 1996
+
+ccode     Singer-Small country codes
+cname     Country name (text)
+superpwr  1 if US or USSR, 0 otherwise
+butterw   Butterworth wars (1960-1974)
+kende     Kende wars (1960-1980)
+ssm_is    Singer-Small interstate wars 1960-1980
+ssm_es    Singer-Small extrasystemic wars 1960-1980
+ssis6074  Singer-Small interstate wars 1960-1974
+sses6074  Singer-Small extrasystemic wars 1960-1974
+ssis7580  Singer-Small interstate wars 1975-1980
+sses7580  Singer-Small extrasystemic wars 1975-1980
+ssal6080  Singer-Small all wars 1960-1980
+ssal6074  Singer-Small all wars 1960-1974
+ssal7580  Singer-Small all wars 1975-1980
+poldem60  1960 political democracy scores from Bollen 1980
+poldem65  1965 political democracy scores from Bollen 1980
+civil73   Freedom House civil liberties score (1-7) 1973
+polit73   Freedom House political liberties score (1-7) 1973
+civil79   Freedom House civil liberties score (1-7) 1979
+polit79   Freedom House political liberties score (1-7) 1979
+fh73      Freedom House 1973 scores.
+fh75_80   Average of 1973 and 1979 Freedom House scores per Weede (1984)
+dembin    Binary version of democracy according to Weede (1984)
+area      Area in square miles excluding non-contiguous colonial
+             possessions (1000)
+defexd    National defense expenditure in U.S. dollar equivalents (1000)
+defexdpc  Per capita national defense expenditure in U.S. dollar
+             equivalents (.01)
+encon     Energy consumption in metric tons of coal equivalents (1000)
+enconpc   Energy consumption in kilograms per capita.
+gnppc     Per capita gross national product at market prices, where
+             gross national product at market prices is the market
+             value of the product, before deduction of provisions
+             for the consumption of fixed capital, attributable to
+             the factors of production supplied by normal residents
+             of the given country. It is identically equal to the
+             sum of consumption expenditure and gross domestic capital
+             formation, private and public, and the net exports of
+             goods and services plus the net factor incomes received
+             from abroad.
+gdppc     Per capita gross domestic product at factor cost, where
+             gross domestic product at factor cost is the value at
+             factor cost of the product, before deduction of provisions
+             for the consumption of fixed capital, attributable to
+             factor services rendered to resident producers of the
+             given country. It differs from the gross domestic
+             product at market prices (variable 86) by the exclusion
+             of the excess of indirect taxes over subsidies.
+impexppc  Per capita total trade in U.S. dollar equivalents (.01)
+impexp    Total trade. Imports plus exports in U.S. dollar equivalents
+             (10,000)
+ecintdep  Calculated as (impexppc/100)/gnppc
+tvpc      Per capita television sets (.0001)
+szmil     Size of military. The number of active-duty members of a
+              nation's armed forces excluding semi- or para-military
+              forces (1000)
+szmilpc	  Proportion of population in armed forces (.0001)
+popltn    Population excluding non-contiguous colonial possessions (1000)
+          
+          (These are the WHBIII Taylor variables)
+milwp70   Military manpower per 1000 working age population, 1970
+popln70   Total population 1970, in 1000s
+ecnpc70   Energy consumption per capita, 1000kg coal equivalents, 1970
+trade75   Imports and exports 1975 as a percentage of GNP
+lmilwp70  Decimal log of Military manpower per 1000 working age pop., 1970
+lpopln70  Decimal log of total population 1970, in 1000s
+lecnpc70  Decimal log of energy cons per capita, 1000kg coal equiv, 1970 

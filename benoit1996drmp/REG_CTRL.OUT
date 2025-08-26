@@ -1,0 +1,211 @@
+ ****************************************************************** 
+ ********************        REG_CTRL.PRG      ******************** 
+ *            Regression models with control variables            * 
+ ****************************************************************** 
+
+
+
+
+Associations
+Valid cases:                    97      Dependent variable:            POLDEM65
+Missing cases:                   4      Deletion method:               Listwise
+Total SS:                94395.354      Degrees of freedom:                  93
+R-squared:                   0.245      Rbar-squared:                     0.221
+Residual SS:             71256.300      Std error of est:                27.680
+F(3,93):                    10.067      Probability of F:                 0.000
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONSTANT    16.214291   26.264877    0.617337     0.539       ---         ---  
+LECNPC70    19.761281    4.121980    4.794123     0.000    0.488662    0.480957
+ECINTDEP     8.613311   17.131128    0.502787     0.616    0.056367    0.203965
+LPOPLN70    -4.404511    6.221031   -0.708003     0.481   -0.079984    0.017419
+Valid cases:                    97      Dependent variable:            LECNPC70
+Missing cases:                   4      Deletion method:               Listwise
+Total SS:                   57.722      Degrees of freedom:                  94
+R-squared:                   0.248      Rbar-squared:                     0.232
+Residual SS:                43.413      Std error of est:                 0.680
+F(2,94):                    15.490      Probability of F:                 0.000
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONSTANT     1.891948    0.173530   10.902744     0.000       ---         ---  
+POLDEM65     0.011230    0.002259    4.970349     0.000    0.454143    0.480957
+ECINTDEP     0.496764    0.345258    1.438821     0.154    0.131466    0.224095
+Valid cases:                    98      Dependent variable:            ECINTDEP
+Missing cases:                   3      Deletion method:               Listwise
+Total SS:                    4.080      Degrees of freedom:                  96
+R-squared:                   0.037      Rbar-squared:                     0.027
+Residual SS:                 3.929      Std error of est:                 0.202
+F(1,96):                     3.679      Probability of F:                 0.058
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONSTANT     0.305208    0.041153    7.416453     0.000       ---         ---  
+POLDEM65     0.001256    0.000655    1.918133     0.058    0.192122    0.192122
+
+
+
+
+Equations (1) - (3) in Table of Neg Bin Regrs with Controls
+-----------------------------------------------------------
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    1/08/96  11:56 am
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal6080
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -5.0857    1.3901    1.2221
+  poldem65   -0.0078    0.0058    0.0058
+  lpopln70    0.8343    0.2749    0.2859
+  lmilwp70    1.0818    0.5088    0.5733
+    gamma0   -1.0130    0.7988    0.5733
+
+log-likelihood = -0.6657     n = 97        
+       sigma^2 =  1.36314 
+DEP: ssal6080    IND: poldem65 lpopln70 lmilwp70
+
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    1/08/96  11:57 am
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal6080
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -3.9468    1.7714    1.5793
+    col. 0   -0.0073    0.0059    0.0061
+    col. 0    0.5977    0.3382    0.3456
+    col. 0    1.3099    0.5148    0.5928
+  col.2656   -1.1893    1.2101    1.1432
+    gamma0   -1.2420    0.9577    0.6841
+
+log-likelihood = -0.6564     n = 96        
+       sigma^2 =  1.28880 
+DEP: ssal6080    IND: poldem65 lpopln70 lmilwp70 ecintdep
+
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    1/08/96  11:58 am
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal6080
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -5.6005    1.6992    1.4743
+    col. 0    0.0004    0.0063    0.0063
+    col. 0    1.1967    0.3402    0.3131
+    col. 0    2.4487    0.5753    0.5964
+  col.2656   -0.0578    1.1204    1.0602
+    col. 0   -1.0806    0.3007    0.2465
+    gamma0   -2.1556    1.8489    1.3845
+
+log-likelihood = -0.5912     n = 96        
+       sigma^2 =  1.11583 
+DEP: ssal6080    IND: poldem65 lpopln70 lmilwp70 ecintdep lecnpc70
+
+
+
+
+Equations (4) - (6) in Table of Neg Bin Regrs with Controls
+-----------------------------------------------------------
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    1/08/96  11:58 am
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal6080
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -5.1551    1.3654    1.1667
+      fh73   -0.0687    0.0458    0.0398
+  lpopln70    0.8732    0.2710    0.2708
+  lmilwp70    1.0346    0.5089    0.5765
+    gamma0   -1.0848    0.8391    0.6296
+
+log-likelihood = -0.6607     n = 98        
+       sigma^2 =  1.33798 
+DEP: ssal6080    IND: fh73 lpopln70 lmilwp70
+
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    1/08/96  11:59 am
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal6080
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -4.1268    1.7820    1.6060
+    col. 0   -0.0692    0.0466    0.0415
+    col. 0    0.6616    0.3387    0.3420
+    col. 0    1.2541    0.5170    0.5999
+  col.2656   -1.0617    1.1998    1.1451
+    gamma0   -1.3152    1.0071    0.7680
+
+log-likelihood = -0.6518     n = 97        
+       sigma^2 =  1.26841 
+DEP: ssal6080    IND: fh73 lpopln70 lmilwp70 ecintdep
+
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    1/08/96  12:00 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal6080
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -5.6690    1.7779    1.5947
+    col. 0   -0.0141    0.0533    0.0505
+    col. 0    1.1915    0.3538    0.3355
+    col. 0    2.3556    0.6056    0.6512
+  col.2656    0.0840    1.1326    1.0491
+    col. 0   -0.9919    0.3079    0.2673
+    gamma0   -1.9389    1.5254    1.2132
+
+log-likelihood = -0.5984     n = 97        
+       sigma^2 =  1.14387 
+DEP: ssal6080    IND: fh73 lpopln70 lmilwp70 ecintdep lecnpc70
+
+
+
+
+Correlations among independent variables
+
+n =  96.00000 
+  poldem    fh73      lpopln70   lmilwp70  ecintdep  lecnpc70
+
+  1.00000   0.78290   0.02344  -0.00235   0.18813   0.48191 
+  0.78290   1.00000   0.09564  -0.04437   0.12953   0.45486 
+  0.02344   0.09564   1.00000   0.10708  -0.47552   0.25575 
+ -0.00235  -0.04437   0.10708   1.00000   0.08067   0.51795 
+  0.18813   0.12953  -0.47552   0.08067   1.00000   0.22243 
+  0.48191   0.45486   0.25575   0.51795   0.22243   1.00000 

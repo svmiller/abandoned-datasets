@@ -1,0 +1,24 @@
+WEEDECAT.CBK
+
+Description of the WEEDECAT.ASC dataset.  I created these data from the 
+WEEDE.ASC dataset, for use in categorical models.
+
+All data is tab-delimited, first row is variable names.
+
+-- Ken Benoit
+   kbenoit@isr.harvard.edu
+
+ccode     Singer-Small country codes
+cname     Country name (text)
+butterw   Butterworth wars (1960-1974)
+kende     Kende wars (1960-1980)
+ssal6080  Singer-Small all wars 1960-1980
+bwB       Butterworth: 0 if no wars, 1 if one or more
+kenB      Kende: 0 if no wars, 1 if one or more
+bwT       Butterworth: 1 no wars, 2 if one, 3 if more than one       
+kenT      Kende: 1 no wars, 2 if one, 3 if more than one
+ssT       Singer-Small (60-80): 1 no wars, 2 if one, 3 if more than one
+ssB       Singer-Small (60-80): 0 if no wars, 1 if one or more
+pdB       Binary version of POLDEM (not used in paper)
+pdT       Trichotomous version of democracy -- see paper for explanation
+dembin	  Weede's binary version of democracy			

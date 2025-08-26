@@ -1,0 +1,455 @@
+                       normalized ---------------- 
+Valid cases:                   100      Dependent variable:            SSAL680N
+Missing cases:                   0      Deletion method:               Listwise
+Total SS:                   99.000      Degrees of freedom:                  98
+R-squared:                   0.020      Rbar-squared:                     0.010
+Residual SS:                96.989      Std error of est:                 0.995
+F(1,98):                     2.032      Probability of F:                 0.157
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST       -0.000000    0.099483   -0.000000     1.000       ---         ---  
+POLDEM65    -0.142534    0.099984   -1.425567     0.157   -0.142534   -0.142534
+
+
+Valid cases:                   100      Dependent variable:              KENDEN
+Missing cases:                   0      Deletion method:               Listwise
+Total SS:                   99.000      Degrees of freedom:                  98
+R-squared:                   0.000      Rbar-squared:                    -0.010
+Residual SS:                98.974      Std error of est:                 1.005
+F(1,98):                     0.025      Probability of F:                 0.874
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST       -0.000000    0.100496   -0.000000     1.000       ---         ---  
+POLDEM65    -0.016071    0.101002   -0.159112     0.874   -0.016071   -0.016071
+
+
+Valid cases:                   100      Dependent variable:             BUTTRWN
+Missing cases:                   0      Deletion method:               Listwise
+Total SS:                   99.000      Degrees of freedom:                  98
+R-squared:                   0.025      Rbar-squared:                     0.015
+Residual SS:                96.551      Std error of est:                 0.993
+F(1,98):                     2.486      Probability of F:                 0.118
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST        0.000000    0.099258    0.000000     1.000       ---         ---  
+POLDEM65    -0.157282    0.099758   -1.576641     0.118   -0.157282   -0.157282
+
+
+
+ *** with Freedom House 1973
+
+Valid cases:                   101      Dependent variable:            SSAL680N
+Missing cases:                   0      Deletion method:               Listwise
+Total SS:                  100.000      Degrees of freedom:                  99
+R-squared:                   0.029      Rbar-squared:                     0.019
+Residual SS:                97.091      Std error of est:                 0.990
+F(1,99):                     2.966      Probability of F:                 0.088
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST       -0.000000    0.098540   -0.000000     1.000       ---         ---  
+FH73        -0.170557    0.099031   -1.722256     0.088   -0.170557   -0.170557
+
+
+Valid cases:                   101      Dependent variable:              KENDEN
+Missing cases:                   0      Deletion method:               Listwise
+Total SS:                  100.000      Degrees of freedom:                  99
+R-squared:                   0.002      Rbar-squared:                    -0.008
+Residual SS:                99.836      Std error of est:                 1.004
+F(1,99):                     0.162      Probability of F:                 0.688
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST        0.000000    0.099923    0.000000     1.000       ---         ---  
+FH73         0.040477    0.100421    0.403074     0.688    0.040477    0.040477
+
+
+Valid cases:                   101      Dependent variable:             BUTTRWN
+Missing cases:                   0      Deletion method:               Listwise
+Total SS:                  100.000      Degrees of freedom:                  99
+R-squared:                   0.016      Rbar-squared:                     0.006
+Residual SS:                98.440      Std error of est:                 0.997
+F(1,99):                     1.569      Probability of F:                 0.213
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST        0.000000    0.099222    0.000000     1.000       ---         ---  
+FH73        -0.124888    0.099717   -1.252429     0.213   -0.124888   -0.124888
+
+
+
+                       unnormalized -------------- 
+Valid cases:                   100      Dependent variable:            SSAL6080
+Missing cases:                   1      Deletion method:               Listwise
+Total SS:                   64.750      Degrees of freedom:                  98
+R-squared:                   0.020      Rbar-squared:                     0.010
+Residual SS:                63.435      Std error of est:                 0.805
+F(1,98):                     2.032      Probability of F:                 0.157
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST        0.648856    0.161031    4.029381     0.000       ---         ---  
+POLDEM65    -0.003683    0.002584   -1.425567     0.157   -0.142534   -0.142534
+
+
+Valid cases:                   100      Dependent variable:               KENDE
+Missing cases:                   1      Deletion method:               Listwise
+Total SS:                  410.240      Degrees of freedom:                  98
+R-squared:                   0.000      Rbar-squared:                    -0.010
+Residual SS:               410.134      Std error of est:                 2.046
+F(1,98):                     0.025      Probability of F:                 0.874
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST        1.296436    0.409458    3.166222     0.002       ---         ---  
+POLDEM65    -0.001045    0.006570   -0.159112     0.874   -0.016071   -0.016071
+
+
+Valid cases:                   100      Dependent variable:             BUTTERW
+Missing cases:                   1      Deletion method:               Listwise
+Total SS:                  263.440      Degrees of freedom:                  98
+R-squared:                   0.025      Rbar-squared:                     0.015
+Residual SS:               256.923      Std error of est:                 1.619
+F(1,98):                     2.486      Probability of F:                 0.118
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST        1.602610    0.324077    4.945152     0.000       ---         ---  
+POLDEM65    -0.008198    0.005200   -1.576641     0.118   -0.157282   -0.157282
+
+
+
+ *** with Freedom House 1973
+
+Valid cases:                   101      Dependent variable:            SSAL6080
+Missing cases:                   0      Deletion method:               Listwise
+Total SS:                   64.950      Degrees of freedom:                  99
+R-squared:                   0.029      Rbar-squared:                     0.019
+Residual SS:                63.061      Std error of est:                 0.798
+F(1,99):                     2.966      Probability of F:                 0.088
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST        0.680087    0.157647    4.313980     0.000       ---         ---  
+FH73        -0.032947    0.019130   -1.722256     0.088   -0.170557   -0.170557
+
+
+Valid cases:                   101      Dependent variable:               KENDE
+Missing cases:                   0      Deletion method:               Listwise
+Total SS:                  411.762      Degrees of freedom:                  99
+R-squared:                   0.002      Rbar-squared:                    -0.008
+Residual SS:               411.088      Std error of est:                 2.038
+F(1,99):                     0.162      Probability of F:                 0.688
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST        1.087572    0.402507    2.701998     0.008       ---         ---  
+FH73         0.019687    0.048843    0.403074     0.688    0.040477    0.040477
+
+
+Valid cases:                   101      Dependent variable:             BUTTERW
+Missing cases:                   0      Deletion method:               Listwise
+Total SS:                  264.772      Degrees of freedom:                  99
+R-squared:                   0.016      Rbar-squared:                     0.006
+Residual SS:               260.643      Std error of est:                 1.623
+F(1,99):                     1.569      Probability of F:                 0.213
+
+                         Standard                 Prob   Standardized  Cor with
+Variable     Estimate      Error      t-value     >|t|     Estimate    Dep Var
+-------------------------------------------------------------------------------
+CONST        1.495267    0.320500    4.665415     0.000       ---         ---  
+FH73        -0.048709    0.038892   -1.252429     0.213   -0.124888   -0.124888
+
+
+
+--------------------------------------------------------------------------------
+                            Poisson Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:00 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssm_is
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -0.6537    0.3050    0.3629
+  poldem65   -0.0061    0.0054    0.0069
+
+log-likelihood = -0.7410     n = 100       
+--------------------------------------------------------------------------------
+                            Poisson Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:00 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal6080
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -0.3736    0.2749    0.3091
+  poldem65   -0.0085    0.0050    0.0064
+
+log-likelihood = -0.7944     n = 100       
+--------------------------------------------------------------------------------
+                            Poisson Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:00 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: kende
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0    0.2604    0.1780    0.2753
+  poldem65   -0.0008    0.0029    0.0058
+
+log-likelihood = -0.9728     n = 100       
+--------------------------------------------------------------------------------
+                            Poisson Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:00 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: butterw
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0    0.5167    0.1729    0.2475
+  poldem65   -0.0073    0.0031    0.0048
+
+log-likelihood = -0.9592     n = 100       
+--------------------------------------------------------------------------------
+                            Poisson Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:00 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssis6074
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -1.3024    0.3735    0.4282
+  poldem65    0.0018    0.0058    0.0074
+
+log-likelihood = -0.6607     n = 100       
+--------------------------------------------------------------------------------
+                            Poisson Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:00 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal6074
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -1.2265    0.3606    0.4115
+  poldem65    0.0016    0.0057    0.0074
+
+log-likelihood = -0.6842     n = 100       
+--------------------------------------------------------------------------------
+                            Poisson Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:00 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssis7580
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -0.7150    0.5087    0.3821
+  poldem65   -0.0388    0.0152    0.0089
+
+log-likelihood = -0.3037     n = 100       
+--------------------------------------------------------------------------------
+                            Poisson Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:00 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal7580
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -0.4135    0.3974    0.3809
+  poldem65   -0.0321    0.0107    0.0104
+
+log-likelihood = -0.4271     n = 100       
+--------------------------------------------------------------------------------
+                            Poisson Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:00 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal6080
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -0.2757    0.2802    0.3203
+      fh73   -0.0825    0.0406    0.0485
+
+log-likelihood = -0.7833     n = 101       
+--------------------------------------------------------------------------------
+                            Poisson Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:00 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: butterw
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0    0.4405    0.1780    0.2802
+      fh73   -0.0448    0.0238    0.0414
+
+log-likelihood = -0.9711     n = 101       
+
+
+ ****************************************************************** 
+ *         Regression models to Replicate Weede's Table 2         * 
+ ****************************************************************** 
+
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:01 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: kende
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0    0.5449    0.2824    0.2495
+  poldem65   -0.0065    0.0047    0.0049
+    gamma0    0.9100    0.3139    0.3241
+
+log-likelihood = -0.5755     n = 100       
+       sigma^2 =  3.48425 
+DEP: kende    IND: poldem65
+
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:01 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: kende
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0    0.3015    0.2950    0.2805
+      fh73   -0.0138    0.0352    0.0380
+    gamma0    0.9224    0.3143    0.3150
+
+log-likelihood = -0.5846     n = 101       
+       sigma^2 =  3.51536 
+DEP: kende    IND: fh73
+
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:01 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal6080
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -0.2413    0.3291    0.2970
+  poldem65   -0.0115    0.0062    0.0064
+    gamma0   -0.5128    0.5655    0.4305
+
+log-likelihood = -0.7513     n = 100       
+       sigma^2 =  1.59881 
+DEP: ssal6080    IND: poldem65
+
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:01 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: ssal6080
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0   -0.2416    0.3351    0.3224
+      fh73   -0.0884    0.0484    0.0476
+    gamma0   -0.5928    0.5975    0.4704
+
+log-likelihood = -0.7473     n = 101       
+       sigma^2 =  1.55275 
+DEP: ssal6080    IND: fh73
+
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:02 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: butterw
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0    0.6079    0.2504    0.2359
+  poldem65   -0.0093    0.0045    0.0046
+    gamma0    0.3906    0.3339    0.2767
+
+log-likelihood = -0.7568     n = 100       
+       sigma^2 =  2.47782 
+DEP: butterw    IND: poldem65
+
+
+--------------------------------------------------------------------------------
+                       Negative Binomial Regression Model  
+================================================================================
+ COUNT:  Version 3.00 (R1)                                    5/22/94   2:02 pm
+================================================================================
+ ANALYZING FILE: WEEDE
+
+
+Dependent Variable: butterw
+
+  PAR_NAME      ESTI      S.E.      R-S.
+     beta0    0.5679    0.2599    0.2482
+      fh73   -0.0652    0.0351    0.0370
+    gamma0    0.4280    0.3303    0.2690
+
+log-likelihood = -0.7598     n = 101       
+       sigma^2 =  2.53420 
+DEP: butterw    IND: fh73
+
+
