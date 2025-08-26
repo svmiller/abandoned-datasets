@@ -6,7 +6,7 @@ These are data sets I've found that are perhaps necessary for replication, but n
 
 ## Contents Include (So Far)
 
-- `mansfieldpevehouse2000tbtf`: Mansfield, Edwaard D. and Jon Pevehouse. 2000. "Trade Blocs, Trade Flows, and International Conflict." *International Organization* 54(4): 775--808.
+- `mansfieldpevehouse2000tbtf`: Mansfield, Edward D. and Jon Pevehouse. 2000. "Trade Blocs, Trade Flows, and International Conflict." *International Organization* 54(4): 775--808.
 - `midlarsky1998de`[^convert]: Midlarsky, Manus I. 1998. “Democracy and the Environment: An Empirical Assessment.” *Journal of Peace Research* 35(3): 341–61.
 - `reiterstam1998dwiv`: Reiter, Dan and Allan C. Stam III. 1998. "Democracy, War Initiation, and Victory." *American Political Science Review* 92(2): 377--89
 
