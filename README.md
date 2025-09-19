@@ -9,6 +9,7 @@ These are data sets I've found that are perhaps necessary for replication, but n
 - `benoit1996drmp`: Benoit, Kenneth. 1996. "Democracies Really Are More Pacific (in General): Reexaming Regime Type and War Involvement." *Journal of Conflict Resolution* 40(4): 636--657.
 - `mansfieldpevehouse2000tbtf`: Mansfield, Edward D. and Jon Pevehouse. 2000. "Trade Blocs, Trade Flows, and International Conflict." *International Organization* 54(4): 775--808.
 - `midlarsky1998de`[^convert]: Midlarsky, Manus I. 1998. “Democracy and the Environment: An Empirical Assessment.” *Journal of Peace Research* 35(3): 341–61.
+- `onealrussett1999kp`: Oneal, John R. and Bruce M. Russett. 1999. "The Kantian Peace: The Pacific Benefits of Democracy, Interdependence, and International Organizations, 1885–1992." *World Politics* 52(1): 1--37.
 - `onealrussett2001cc`: Oneal, John R. and Bruce M. Russett. 2001. "Clear and Clean: The Fixed Effects of the Liberal Peace." *International Organization* 55(2): 469--85.
 - `onealrussett2001tp`: Oneal, John R. and Bruce M. Russett. 2001. *Triangulating Peace: Democracy, Interdependence, and International Organizations*. Norton.
 - `reiterstam1998dwiv`: Reiter, Dan and Allan C. Stam III. 1998. "Democracy, War Initiation, and Victory." *American Political Science Review* 92(2): 377--89
