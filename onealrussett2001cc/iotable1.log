@@ -1,0 +1,324 @@
+Analysis do-file iotable1 run on 23 Apr 2001 at 10:01:59
+
+. /*GEE and clogit of onsets, all dyads & all years, for Oneal and Russett's 
+> "Clear and Clean," IO Spring 2001, reply to Green et al.:4-23-2000*/  
+. 
+. set mem 45m
+(46080k)
+
+. set matsize 150
+
+.   
+. use io_tbl1
+(Oneal&Russett, IO Spring2001, Table1, cols1&2: 4-12-2001)
+
+. 
+. desc
+
+Contains data from io_tbl1.dta
+  obs:       149,381                          Oneal&Russett, IO Spring2001,
+                                                Table1, cols1&2: 4-12-2001
+ vars:            13                          12 Apr 2001 14:20
+ size:     4,332,049 (90.8% of memory free)
+-------------------------------------------------------------------------------
+   1. statea    int    %4.0f                  COW Code for State A
+   2. stateb    int    %4.0f                  COW Code for State B
+   3. year      int    %4.0f                  Calendar Year
+   4. allies    byte   %9.0g                  states a&b formally allied=1
+   5. contigkb  byte   %9.0g                  =1 if contig by less than 150 m
+   6. logdstab  float  %9.0g                  ln distance, min port-to-port
+   7. lcaprat2  float  %9.0g                  ln large/small capab ratio
+   8. onset     byte   %9.0g                  onset of MID at t
+   9. onset1    byte   %9.0g                  onset of MID at t+1
+  10. yrsonst1  byte   %8.0g                  years of peace since last onset1
+  11. majpower  byte   %9.0g                  =1 if at least one state is
+                                                major power
+  12. smldep    float  %9.0g                  lower bilateral trade-to-GDP
+                                                ratio in dyad
+  13. smldmat   byte   %9.0g                  lower DEMOC-AUTOC score in dyad
+-------------------------------------------------------------------------------
+Sorted by:  statea  stateb  year  
+
+. summ
+
+Variable |     Obs        Mean   Std. Dev.       Min        Max
+---------+-----------------------------------------------------
+  statea |  149381    271.3322   179.2326          2        920  
+  stateb |  149381    519.7953   221.0237         20        950  
+    year |  149381    1964.285   24.22394       1885       1991  
+  allies |  149381    .1334976   .3401128          0          1  
+contigkb |  149381    .0806194   .2722506          0          1  
+logdstab |  149381    8.039764   .8993206   1.871744   9.419106  
+lcaprat2 |  149381    1.989608   1.507625   .0000265   9.103004  
+   onset |  149381    .0060717   .0776846          0          1  
+  onset1 |  149381    .0074909   .0862256          0          1  
+yrsonst1 |  145262    31.11209   27.38577          0        126  
+majpower |  149381    .1756649   .3805361          0          1  
+  smldep |  149381    .0012355   .0051954          0   .2124398  
+ smldmat |  149381   -3.318996   6.629522        -10         10  
+
+. 
+. gen dyadid=(1000*statea)+stateb
+
+.   
+. /*drop short time series*/  
+. egen n=count(onset1), by(dyadid)  
+
+. keep if n>19
+(33439 observations deleted)
+
+. drop n 
+
+.   
+. iis dyadid  
+
+. tis year  
+
+. #del ;  
+delimiter now ;
+. /*col 1, Table 1*/  
+> xtgee onset1 smldmat smldep lcaprat allies contig logdstab majpower,  
+>       family(binomial) link(logit) corr(ar1) force robust;
+
+Iteration 1: tolerance = .01688982
+Iteration 2: tolerance = .00008126
+Iteration 3: tolerance = 1.431e-07
+
+GEE population-averaged model                   Number of obs      =    115942
+Group and time vars:           dyadid year      Number of groups   =      3139
+Link:                                logit      Obs per group: min =        20
+Family:                           binomial                     avg =      36.9
+Correlation:                         AR(1)                     max =        90
+                                                Wald chi2(7)       =   1148.35
+Scale parameter:                         1      Prob > chi2        =    0.0000
+
+                           (standard errors adjusted for clustering on dyadid)
+------------------------------------------------------------------------------
+         |             Semi-robust
+  onset1 |      Coef.   Std. Err.       z     P>|z|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+ smldmat |  -.0554721   .0111323     -4.983   0.000       -.077291   -.0336532
+  smldep |  -50.38856   14.78995     -3.407   0.001      -79.37634   -21.40079
+lcaprat2 |  -.2958045   .0509722     -5.803   0.000      -.3957082   -.1959008
+  allies |  -.3411687   .1746327     -1.954   0.051      -.6834424    .0011051
+contigkb |      2.013   .1870071     10.764   0.000       1.646473    2.379527
+logdstab |  -.4528129   .0570821     -7.933   0.000      -.5646918    -.340934
+majpower |   1.676423    .181946      9.214   0.000       1.319816    2.033031
+   _cons |  -2.033442   .4699725     -4.327   0.000      -2.954572   -1.112313
+------------------------------------------------------------------------------
+
+.     /*col 2, Table 1*/  
+> clogit onset1 smldep smldmat contig logdstab allies lcaprat2 majpower,
+>       group(dyadid);
+
+Note: multiple positive outcomes within groups encountered.
+Note: 2751 groups (97150 obs) dropped due to all positive or negative outcomes.
+Note: logdstab omitted due to no within-group variance.
+Iteration 0:   log likelihood = -2854.2087
+Iteration 1:   log likelihood = -2786.5994
+Iteration 2:   log likelihood = -2784.2823
+Iteration 3:   log likelihood = -2784.2654
+Iteration 4:   log likelihood = -2784.2654
+
+Conditional (fixed-effects) logistic regression   Number of obs   =      18792
+                                                  LR chi2(6)      =     145.78
+                                                  Prob > chi2     =     0.0000
+Log likelihood = -2784.2654                       Pseudo R2       =     0.0255
+
+------------------------------------------------------------------------------
+  onset1 |      Coef.   Std. Err.       z     P>|z|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+  smldep |  -18.39399   10.48919     -1.754   0.079      -38.95242    2.164451
+ smldmat |  -.0327199    .009911     -3.301   0.001      -.0521451   -.0132948
+contigkb |   1.797432   .2476947      7.257   0.000       1.311959    2.282905
+  allies |  -.4364347   .1266621     -3.446   0.001      -.6846879   -.1881815
+lcaprat2 |  -.0917859   .0919955     -0.998   0.318      -.2720938     .088522
+majpower |   1.511436   .2994846      5.047   0.000       .9244567    2.098415
+------------------------------------------------------------------------------
+
+.     drop _all;
+
+.   set mem 45m;
+(46080k)
+
+.   set matsize 350;
+
+.     use io_tbl1a;
+(Oneal&Russett, IO Spring2001, Table1, col3: 4-12-2001)
+
+.   desc;
+
+Contains data from io_tbl1a.dta
+  obs:       149,381                          Oneal&Russett, IO Spring2001,
+                                                Table1, col3: 4-12-2001
+ vars:            21                          12 Apr 2001 14:20
+ size:     6,871,526 (85.3% of memory free)
+-------------------------------------------------------------------------------
+   1. statea    int    %4.0f                  COW Code for State A
+   2. stateb    int    %4.0f                  COW Code for State B
+   3. year      int    %4.0f                  Calendar Year
+   4. contigkb  byte   %9.0g                  =1 if contig by less than 150 m
+   5. onset1    byte   %9.0g                  onset of MID at t+1
+   6. majpower  byte   %9.0g                  =1 if at least one state is
+                                                major power
+   7. smldp1    float  %9.0g                  lower trade-to-GDP ratio at t-1
+   8. smldp2    float  %9.0g                  lower trade-to-GDP ratio at t-2
+   9. smldp3    float  %9.0g                  lower trade-to-GDP ratio at t-3
+  10. smldmt1   byte   %9.0g                  lower DEMOC-AUTOC score at t-1
+  11. smldmt2   byte   %9.0g                  lower DEMOC-AUTOC score at t-2
+  12. smldmt3   byte   %9.0g                  lower DEMOC-AUTOC score at t-3
+  13. allies1   byte   %9.0g                  =1 if allied at t-1
+  14. allies2   byte   %9.0g                  =1 if allied at t-2
+  15. allies3   byte   %9.0g                  =1 if allied at t-3
+  16. lcaprt1   float  %9.0g                  ln, higher/lower COW capability
+                                                scores at t-1
+  17. lcaprt2   float  %9.0g                  ln, higher/lower COW capability
+                                                scores at t-2
+  18. lcaprt3   float  %9.0g                  ln, higher/lower COW capability
+                                                scores at t-3
+  19. onst1     byte   %9.0g                  onset of MID at t-1
+  20. onst2     byte   %9.0g                  onset of MID at t-2
+  21. onst3     byte   %9.0g                  onset of MID at t-3
+-------------------------------------------------------------------------------
+Sorted by:  statea  stateb  year  
+
+. summ;
+
+Variable |     Obs        Mean   Std. Dev.       Min        Max
+---------+-----------------------------------------------------
+  statea |  149381    271.3322   179.2326          2        920  
+  stateb |  149381    519.7953   221.0237         20        950  
+    year |  149381    1964.285   24.22394       1885       1991  
+contigkb |  149381    .0806194   .2722506          0          1  
+  onset1 |  149381    .0074909   .0862256          0          1  
+majpower |  149381    .1756649   .3805361          0          1  
+  smldp1 |  149381    .0012355   .0051954          0   .2124398  
+  smldp2 |  138480    .0012631   .0052578          0   .2124398  
+  smldp3 |  130133    .0012806   .0052857          0   .2124398  
+ smldmt1 |  149381   -3.318996   6.629522        -10         10  
+ smldmt2 |  138480   -3.285897   6.654999        -10         10  
+ smldmt3 |  130133   -3.260418    6.66586        -10         10  
+ allies1 |  149381    .1334976   .3401128          0          1  
+ allies2 |  138480    .1328206    .339382          0          1  
+ allies3 |  130133    .1323953   .3389213          0          1  
+ lcaprt1 |  149381    1.989608   1.507625   .0000265   9.103004  
+ lcaprt2 |  138480    1.999648   1.513966   .0000265   9.103004  
+ lcaprt3 |  130133    2.006499    1.51758   .0000265   9.103004  
+   onst1 |  149381    .0060717   .0776846          0          1  
+   onst2 |  138480    .0059503   .0769087          0          1  
+   onst3 |  130133      .00604   .0774825          0          1  
+
+. gen dyadid=(1000*statea)+stateb;
+
+.   /*drop short time series*/  
+> egen n=count(onset1), by(dyadid);
+
+.   keep if n>19;
+(33439 observations deleted)
+
+.     drop n;
+
+.     /*col 3, Table 1*/  
+> clogit onset1 smldp1-smldp3 smldmt1-smldmt3 contigkb allies1-allies3  
+>       lcaprt1-lcaprt3 majpower onst1-onst3, group(dyadid);
+
+Note: multiple positive outcomes within groups encountered.
+Note: 2770 groups (86317 obs) dropped due to all positive or negative outcomes.
+Iteration 0:   log likelihood = -2419.5833
+Iteration 1:   log likelihood = -2314.1803
+Iteration 2:   log likelihood = -2310.9608
+Iteration 3:   log likelihood = -2310.9336
+Iteration 4:   log likelihood = -2310.9336
+
+Conditional (fixed-effects) logistic regression   Number of obs   =      15715
+                                                  LR chi2(17)     =     271.73
+                                                  Prob > chi2     =     0.0000
+Log likelihood = -2310.9336                       Pseudo R2       =     0.0555
+
+------------------------------------------------------------------------------
+  onset1 |      Coef.   Std. Err.       z     P>|z|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+  smldp1 |  -67.02963   24.60736     -2.724   0.006      -115.2592    -18.8001
+  smldp2 |   36.85825   27.74312      1.329   0.184      -17.51727    91.23376
+  smldp3 |   9.131485   21.56107      0.424   0.672      -33.12744    51.39041
+ smldmt1 |  -.0393399   .0265312     -1.483   0.138      -.0913401    .0126604
+ smldmt2 |    .032817   .0362276      0.906   0.365      -.0381877    .1038217
+ smldmt3 |  -.0472324   .0273229     -1.729   0.084      -.1007843    .0063195
+contigkb |   1.608216   .2850552      5.642   0.000       1.049518    2.166914
+ allies1 |  -.2864457   .3742123     -0.765   0.444      -1.019888    .4469969
+ allies2 |  -.5703403   .5342185     -1.068   0.286      -1.617389    .4767087
+ allies3 |   .4984005   .4127553      1.207   0.227       -.310585    1.307386
+ lcaprt1 |   -.241746    .336386     -0.719   0.472      -.9010505    .4175585
+ lcaprt2 |  -.1413968   .4211361     -0.336   0.737      -.9668084    .6840149
+ lcaprt3 |   .3440275   .3349384      1.027   0.304      -.3124398    1.000495
+majpower |   1.474873   .3315617      4.448   0.000       .8250244    2.124722
+   onst1 |   .7595583   .1117929      6.794   0.000       .5404482    .9786684
+   onst2 |   .6012954   .1161964      5.175   0.000       .3735545    .8290362
+   onst3 |   .5160211   .1192672      4.327   0.000       .2822618    .7497805
+------------------------------------------------------------------------------
+
+.   testparm smldp*;
+
+ ( 1)  smldp1 = 0.0
+ ( 2)  smldp2 = 0.0
+ ( 3)  smldp3 = 0.0
+
+           chi2(  3) =    7.76
+         Prob > chi2 =    0.0513
+
+
+.   testparm smldmt*;
+
+ ( 1)  smldmt1 = 0.0
+ ( 2)  smldmt2 = 0.0
+ ( 3)  smldmt3 = 0.0
+
+           chi2(  3) =   21.35
+         Prob > chi2 =    0.0001
+
+
+.   testparm allies*;
+
+ ( 1)  allies1 = 0.0
+ ( 2)  allies2 = 0.0
+ ( 3)  allies3 = 0.0
+
+           chi2(  3) =    8.50
+         Prob > chi2 =    0.0368
+
+
+.   testparm lcaprt*;
+
+ ( 1)  lcaprt1 = 0.0
+ ( 2)  lcaprt2 = 0.0
+ ( 3)  lcaprt3 = 0.0
+
+           chi2(  3) =    1.50
+         Prob > chi2 =    0.6829
+
+
+.   testparm onst*;
+
+ ( 1)  onst1 = 0.0
+ ( 2)  onst2 = 0.0
+ ( 3)  onst3 = 0.0
+
+           chi2(  3) =  115.22
+         Prob > chi2 =    0.0000
+
+
+.     display (_b[smldmt1]+_b[smldmt2]+_b[smldmt3]);
+-.05375527
+
+.   display (_b[smldp1]+_b[smldp2]+_b[smldp3]);
+-21.039901
+
+.   display (_b[allies1]+_b[allies2]+_b[allies3]);
+-.35838552
+
+.   display (_b[onst1]+_b[onst2]+_b[onst3]);
+1.8768748
+
+.     exit;
+
+end of do-file

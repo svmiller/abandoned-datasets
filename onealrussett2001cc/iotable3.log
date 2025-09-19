@@ -1,0 +1,160 @@
+Analysis do-file iotable3 run on 23 Apr 2001 at 10:01:44
+
+. /*analyses of trade flows for Oneal and Russett's "Clear and Clean," IO Sprin
+> g 2001, reply to Green et al.:4-23-2000*/  
+. 
+. set mem 45m
+(46080k)
+
+. set matsize 150
+
+.   
+. use io_tbl3
+(Oneal&Russett, IO Spring2001, Table3: 4-20-2001)
+
+. 
+. desc 
+
+Contains data from io_tbl3.dta
+  obs:       151,651                          Oneal&Russett, IO Spring2001,
+                                                Table3: 4-20-2001
+ vars:            13                          23 Apr 2001 09:52
+ size:     6,217,691 (86.8% of memory free)
+-------------------------------------------------------------------------------
+   1. statea    int    %4.0f                  COW Code for State A
+   2. stateb    int    %4.0f                  COW Code for State B
+   3. year      int    %4.0f                  Calendar Year
+   4. demauta   byte   %9.0g                  a's DEMOC-AUTOC score: Polity3
+   5. demautb   byte   %9.0g                  b's DEMOC-AUTOC score: Polity3
+   6. allies    byte   %9.0g                  states a&b formally allied=1
+   7. logdstab  float  %9.0g                  ln distance, min port-to-port
+   8. tpopa     float  %9.0g                  Total Population (thousands)
+   9. tpopb     float  %9.0g                  Total Population (thousands)
+  10. ctrade    float  %9.0g                  dyadic X+M + .1: millions curr $
+  11. trade     float  %9.0g                  ctrade in millions real 1990 $
+  12. rgdpa     float  %9.0g                  gdp of state a in millions real
+                                                1990 $
+  13. rgdpb     float  %9.0g                  gdp of state b in millions real
+                                                1990 $
+-------------------------------------------------------------------------------
+Sorted by:  statea  stateb  year  
+
+. summ
+
+Variable |     Obs        Mean   Std. Dev.       Min        Max
+---------+-----------------------------------------------------
+  statea |  151651    271.7991   179.3878          2        920  
+  stateb |  151651    520.5416   221.0874         20        950  
+    year |  151651      1964.7   24.27635       1885       1992  
+ demauta |  151651    2.114651   7.789718        -10         10  
+ demautb |  151651    .1318818   7.878548        -10         10  
+  allies |  151651     .133583   .3402049          0          1  
+logdstab |  151651     8.04173   .8981948   1.871744   9.419106  
+   tpopa |  151614    30122.33   74949.15        143    1188000  
+   tpopb |  151629    51135.83   146496.2        143    1188000  
+  ctrade |  150892    233.1234   2216.037         .1   191448.1  
+   trade |  150892    391.7783   2773.696   .0883029   176739.1  
+   rgdpa |  148817    2.25e+08   6.43e+08   130395.3   5.45e+09  
+   rgdpb |  148213    1.30e+08   2.94e+08   130395.3   2.67e+09  
+
+. 
+. gen lntrade=ln(trade)  
+(759 missing values generated)
+
+. 
+. quietly by statea stateb: gen n=_n  
+
+.   
+. quietly by statea stateb: gen trade_l1=trade[_n-1] if year-1==year[_n-1] & n~
+> =1  
+
+. gen lntrade1=ln(trade_l1)  
+(11859 missing values generated)
+
+. 
+. gen lngdp_dp=ln(rgdpa)+ln(rgdpb)  
+(4002 missing values generated)
+
+. gen lnpop_dp=ln(tpopa)+ln(tpopb)  
+(59 missing values generated)
+
+. drop tp* n 
+
+.   
+. gen smldmat=demauta if demauta<=demautb & demautb~=.  
+(74739 missing values generated)
+
+. replace smldmat=demautb if demautb<demauta & demauta~=.  
+(74739 real changes made)
+
+. drop dem*  
+
+. 
+. #del ;  
+delimiter now ;
+. gen dyadid=(1000*statea)+stateb;
+
+.     iis dyadid;
+
+.   tis year;
+
+.     /*1885-1992 analyses, dropping short time series*/  
+> egen n=count(lntrade1), by(dyadid);
+
+.   /*col 1, Tables 3 and 4*/  
+> reg lntrade lngdp_dp lnpop_dp logdstab smldmat   
+>       allies lntrade1 if n>19, cluster(dyadid);
+
+Regression with robust standard errors                 Number of obs =  104321
+                                                       F(  6,  2915) =       .
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.9368
+Number of clusters (dyadid) = 2916                     Root MSE      =  .66064
+
+------------------------------------------------------------------------------
+         |               Robust
+ lntrade |      Coef.   Std. Err.       t     P>|t|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+lngdp_dp |   .0786959   .0025077     31.382   0.000       .0737789    .0836128
+lnpop_dp |  -.0252304   .0021239    -11.879   0.000      -.0293949   -.0210659
+logdstab |   -.074161     .00318    -23.321   0.000      -.0803962   -.0679258
+ smldmat |   .0032663    .000325     10.051   0.000       .0026291    .0039034
+  allies |   -.022322   .0067554     -3.304   0.001      -.0355678   -.0090761
+lntrade1 |   .9162219   .0021776    420.750   0.000       .9119521    .9204916
+   _cons |  -1.358979   .0509013    -26.698   0.000      -1.458785   -1.259172
+------------------------------------------------------------------------------
+
+.         /*col 2, Tables 3 and 4*/  
+> xtreg lntrade lngdp_dp lnpop_dp logdstab smldmat   
+>       allies lntrade1 if n>19, fe i(dyadid);
+
+Fixed-effects (within) regression               Number of obs      =    104321
+Group variable (i) : dyadid                     Number of groups   =      2916
+
+R-sq:  within  = 0.7762                         Obs per group: min =        19
+       between = 0.9844                                        avg =      35.8
+       overall = 0.9259                                        max =        87
+
+                                                F(5,101400)        =  70320.08
+corr(u_i, Xb)  = 0.6797                         Prob > F           =    0.0000
+
+------------------------------------------------------------------------------
+ lntrade |      Coef.   Std. Err.       t     P>|t|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+lngdp_dp |   .1967762   .0045455     43.290   0.000       .1878671    .2056853
+lnpop_dp |   -.211764   .0106901    -19.809   0.000      -.2327164   -.1908115
+logdstab |  (dropped)
+ smldmat |   .0012344   .0005237      2.357   0.018       .0002079    .0022608
+  allies |     .04628   .0120604      3.837   0.000       .0226418    .0699181
+lntrade1 |   .7909064   .0018289    432.453   0.000       .7873219     .794491
+   _cons |  -2.214089   .0824284    -26.861   0.000      -2.375648   -2.052531
+------------------------------------------------------------------------------
+ sigma_u |  .46352756
+ sigma_e |  .64185695
+     rho |   .3427644   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0:     F(2915,101400) =     3.13         Prob > F = 0.0000
+
+.           exit;
+
+end of do-file
