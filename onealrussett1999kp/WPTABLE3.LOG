@@ -1,0 +1,292 @@
+Analysis do-file wptable3 run on  8 Nov 1999 at 11:14:10
+
+. /*Table 3, Assessing the Kantian Peace, World Politics, October 1999*/
+. 
+. set matsize 140
+
+. 
+. use kant699a
+(O&R's Kantian data, 1885-1992: )
+
+. 
+. describe
+
+Contains data from kant699a.dta
+  obs:       149,404                            O&R's Kantian data, 1885-1992: 
+ vars:            27                            8 Nov 1999 11:04
+ size:    11,802,916 (81.4% of memory free)
+-------------------------------------------------------------------------------
+   1. statea      int    %4.0f                  COW Code for State A
+   2. stateb      int    %4.0f                  COW Code for State B
+   3. year        int    %4.0f                  Calendar Year
+   4. dependa     float  %9.0g                  a&b's bilat trade/a's GDP
+   5. dependb     float  %9.0g                  a&b's bilat trade/b's GDP
+   6. demauta     byte   %9.0g                  a's DEMOC-AUTOC score: Polity3
+   7. demautb     byte   %9.0g                  b's DEMOC-AUTOC score: Polity3
+   8. allies      byte   %9.0g                  states a&b formally allied=1
+   9. dispute1    byte   %9.0g                  militarized dispute at t+1
+  10. contigkb    byte   %9.0g                  =1 if contig by less than 150 m
+  11. logdstab    float  %9.0g                  log distance, min port-to-port
+  12. lcaprat2    float  %9.0g                  log large/small capab ratio
+  13. hegpower    float  %9.0g                  heg capabil/all majpowrs' cap
+  14. hegdefb     float  %9.0g                  hegemon's mx/gdp
+  15. avgdmat     float  %9.0g                  annual avg democ-autoc score
+  16. sddmat      float  %9.0g                  std dev, annual avg demaut scor
+  17. avgdep      float  %9.0g                  annual avg bilat trade/GDP rati
+  18. sddep       float  %9.0g                  std dev, annual avg dependence
+  19. avgigos     float  %9.0g                  annual avg joint igo membership
+  20. sdigos      float  %9.0g                  std dev, annual avg sumigos
+  21. smigoabi    int    %9.0g                  jnt IGO members, interpolated
+  22. statusqa    float  %9.0g                  a's status quo satisfaction
+  23. statusqb    float  %9.0g                  b's status quo satisfaction
+  24. peaceyr1    int    %9.0g                  yrspeace: (.,.)
+  25. peaceyr2    int    %9.0g                  yrspeace: (44,.)
+  26. peaceyr3    byte   %9.0g                  yrspeace: (88,.)
+  27. peaceyr4    byte   %9.0g                  yrspeace: (132,.)
+-------------------------------------------------------------------------------
+Sorted by:  statea  stateb  year  
+
+. summarize
+
+Variable |     Obs        Mean   Std. Dev.       Min        Max
+---------+-----------------------------------------------------
+  statea |  149404    271.3428   179.2233          2        920  
+  stateb |  149404    519.7716   221.0164         20        950  
+    year |  149404    1964.275   24.23754       1870       1991  
+ dependa |  149404    .0030761   .0140584          0   .5589288  
+ dependb |  149404     .006415   .0228698          0   .6529297  
+ demauta |  149404    2.059885   7.798029        -10         10  
+ demautb |  149404    .0901047   7.882383        -10         10  
+  allies |  149404     .133477   .3400907          0          1  
+dispute1 |  149404     .009471   .0968573          0          1  
+contigkb |  149404    .0806203   .2722521          0          1  
+logdstab |  149404    8.039599   .8993503   1.871744   9.419106  
+lcaprat2 |  149404     1.98946    1.50757   .0000265   9.103004  
+hegpower |  149404    .2684727   .0789335    .100882   .5174484  
+ hegdefb |  149404    .0577645   .0238196   .0108751   .2131978  
+ avgdmat |  149403   -.7450631    1.23965  -2.402985   2.742729  
+  sddmat |  149403    7.448366   .5887284   5.108002   7.867476  
+  avgdep |  149403    .0042075   .0011875   .0013126   .0073449  
+   sddep |  149403    .0179046   .0042726   .0042586   .0258185  
+ avgigos |  149403    18.61579   5.687607    2.34127   26.60728  
+  sdigos |  149403    10.89634   2.265141   2.492477   14.31436  
+smigoabi |  149404    25.22914   14.26355          0        130  
+statusqa |  147992    .2640675   .3999171  -.4641784          1  
+statusqb |  147992    .0509475   .3486714  -.4641784          1  
+peaceyr1 |  149404    33.98017   32.64586          0        175  
+peaceyr2 |  149404    9.327341   22.07614          0        131  
+peaceyr3 |  149404    2.489967   10.16632          0         87  
+peaceyr4 |  149404    .3043694   2.550669          0         43  
+
+. 
+. gen smldmat=demauta if demauta<=demautb & demautb~=.
+(73609 missing values generated)
+
+. replace smldmat=demautb if demautb<demauta & demauta~=.
+(73609 real changes made)
+
+. gen lrgdmat=demautb if demauta<=demautb & demautb~=.
+(73609 missing values generated)
+
+. replace lrgdmat=demauta if demautb<demauta & demauta~=.
+(73609 real changes made)
+
+. 
+. gen smldep=dependa if dependa<=dependb & dependb~=.
+(55264 missing values generated)
+
+. replace smldep=dependb if dependb<dependa & dependa~=.
+(55264 real changes made)
+
+. gen lrgdep=dependb if dependa<=dependb & dependb~=.
+(55264 missing values generated)
+
+. replace lrgdep=dependa if dependb<dependa & dependa~=.
+(55264 real changes made)
+
+. 
+. gen satisa=statusqa+1
+(1412 missing values generated)
+
+. gen satisb=statusqb+1
+(1412 missing values generated)
+
+. gen jntsatis=satisa*satisb
+(1412 missing values generated)
+
+. 
+. gen majpower=1 if (statea==365 | stateb==365)
+(145793 missing values generated)
+
+. replace majpower=1 if (statea==200 | stateb==200)
+(5626 real changes made)
+
+. #del ;
+delimiter now ;
+. replace majpower=1 if (statea==255 | stateb==255) & ((year<1919) | (year>1924
+>       & year<1946));
+(1354 real changes made)
+
+. #del cr
+delimiter now cr
+. replace majpower=1 if (statea==220 | stateb==220)
+(5440 real changes made)
+
+. replace majpower=1 if (statea==325 | stateb==325) & (year>1859 & year<1940)
+(1189 real changes made)
+
+. replace majpower=1 if (statea==300 | stateb==300) & (year<1919)
+(482 real changes made)
+
+. replace majpower=1 if (statea==740 | stateb==740) & (year>1894 & year<1946)
+(1220 real changes made)
+
+. replace majpower=1 if (statea==2 | stateb==2) & (year>1898)
+(4968 real changes made)
+
+. replace majpower=1 if (statea==710 | stateb==710) & (year>1949)
+(2351 real changes made)
+
+. replace majpower=0 if majpower==.
+(123163 real changes made)
+
+. 
+. gen dyadid=(1000*statea)+stateb
+
+. 
+. gen smldmtrl=(smldmat-avgdmat)/sddmat
+(1 missing value generated)
+
+. gen smldeprl=(smldep-avgdep)/sddep
+(1 missing value generated)
+
+. gen sumigorl=(smigoabi-avgigos)/sdigos
+(1 missing value generated)
+
+. 
+. #del ;
+delimiter now ;
+. iis dyadid;
+
+. tis year;
+
+. /*col 1, Table 3*/
+> xtgee dispute1 smldmtrl smldeprl sumigorl avgdmat avgdep avgigos lcaprat
+>       allies contig logdstab majpower,
+>       family(binomial) link(logit) corr(ar1) force robust nolog;
+note:  some groups have fewer than 2 observations
+       not possible to estimate correlations for those groups
+       31 groups omitted from estimation
+
+
+General estimating equation for panel data        Number of obs    =    149372
+Group and time vars:           dyadid year        Number of groups =      5829
+Link:                                logit        Obs/group, min   =         2
+Family:                           binomial                   avg   =     25.63
+Correlation:                         AR(1)                   max   =        90
+                                                  chi2(11)         =   1559.82
+Scale parameter:                         1        Prob > chi2      =    0.0000
+Pearson chi2(149360):            106836.92        Deviance         =  12537.77
+Dispersion (Pearson):             .7152981        Dispersion       =  .0839433
+
+                           (standard errors adjusted for clustering on dyadid)
+------------------------------------------------------------------------------
+         |               Robust
+dispute1 |      Coef.   Std. Err.       z     P>|z|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+smldmtrl |  -.3688419   .0680238     -5.422   0.000      -.5021661   -.2355176
+smldeprl |  -.7270416   .2332839     -3.117   0.002       -1.18427   -.2698135
+sumigorl |  -.1304396    .050018     -2.608   0.009      -.2284732    -.032406
+ avgdmat |  -.2382559   .0412307     -5.779   0.000      -.3190666   -.1574452
+  avgdep |  -292.4397   36.41784     -8.030   0.000      -363.8174   -221.0621
+ avgigos |   .0043194   .0108981      0.396   0.692      -.0170406    .0256793
+lcaprat2 |  -.2897493   .0517915     -5.595   0.000      -.3912588   -.1882399
+  allies |  -.2553651   .1625493     -1.571   0.116      -.5739559    .0632257
+contigkb |   2.008044   .1802562     11.140   0.000       1.654749     2.36134
+logdstab |  -.4914592   .0566657     -8.673   0.000      -.6025219   -.3803964
+majpower |   2.022977   .1892758     10.688   0.000       1.652003    2.393951
+   _cons |  -.7344724   .4849663     -1.514   0.130      -1.684989    .2160441
+------------------------------------------------------------------------------
+
+. /*col 2, Table 1*/
+> xtgee dispute1 smldmtrl smldeprl sumigorl avgdmat avgdep avgigos lcaprat
+>       allies contig logdstab majpower hegpower jntsatis,
+>       family(binomial) link(logit) corr(ar1) force robust nolog;
+note:  some groups have fewer than 2 observations
+       not possible to estimate correlations for those groups
+       29 groups omitted from estimation
+
+
+General estimating equation for panel data        Number of obs    =    147963
+Group and time vars:           dyadid year        Number of groups =      5777
+Link:                                logit        Obs/group, min   =         2
+Family:                           binomial                   avg   =     25.61
+Correlation:                         AR(1)                   max   =        90
+                                                  chi2(13)         =   1530.24
+Scale parameter:                         1        Prob > chi2      =    0.0000
+Pearson chi2(147949):            106083.65        Deviance         =  12328.22
+Dispersion (Pearson):             .7170285        Dispersion       =  .0833275
+
+                           (standard errors adjusted for clustering on dyadid)
+------------------------------------------------------------------------------
+         |               Robust
+dispute1 |      Coef.   Std. Err.       z     P>|z|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+smldmtrl |  -.3576312   .0677246     -5.281   0.000      -.4903691   -.2248933
+smldeprl |  -.7044678   .2411858     -2.921   0.003      -1.177183   -.2317523
+sumigorl |  -.1060457   .0511919     -2.072   0.038        -.20638   -.0057115
+ avgdmat |   -.248455   .0411858     -6.033   0.000      -.3291776   -.1677323
+  avgdep |  -260.3094   48.70655     -5.344   0.000      -355.7725   -164.8463
+ avgigos |   .0101762   .0114503      0.889   0.374       -.012266    .0326185
+lcaprat2 |  -.2787233   .0521417     -5.345   0.000      -.3809193   -.1765274
+  allies |  -.2186481   .1664664     -1.313   0.189      -.5449164    .1076201
+contigkb |   2.042314   .1828124     11.172   0.000       1.684008    2.400619
+logdstab |  -.4637445   .0596649     -7.772   0.000      -.5806855   -.3468035
+majpower |   2.007345   .1941279     10.340   0.000       1.626862    2.387829
+hegpower |  -1.533881    .950174     -1.614   0.106      -3.396188    .3284262
+jntsatis |  -.0892909   .1057072     -0.845   0.398      -.2964731    .1178913
+   _cons |  -.7112954   .5075393     -1.401   0.161      -1.706054    .2834633
+------------------------------------------------------------------------------
+
+. /*col 3, Table 1*/
+> xtgee dispute1 smldmtrl smldeprl sumigorl avgdmat avgdep avgigos lcaprat
+>       allies contig logdstab majpower hegdefb,
+>       family(binomial) link(logit) corr(ar1) force robust nolog;
+note:  some groups have fewer than 2 observations
+       not possible to estimate correlations for those groups
+       31 groups omitted from estimation
+
+
+General estimating equation for panel data        Number of obs    =    149372
+Group and time vars:           dyadid year        Number of groups =      5829
+Link:                                logit        Obs/group, min   =         2
+Family:                           binomial                   avg   =     25.63
+Correlation:                         AR(1)                   max   =        90
+                                                  chi2(12)         =   1529.38
+Scale parameter:                         1        Prob > chi2      =    0.0000
+Pearson chi2(149359):            111319.90        Deviance         =  12415.10
+Dispersion (Pearson):             .7453177        Dispersion       =  .0831225
+
+                           (standard errors adjusted for clustering on dyadid)
+------------------------------------------------------------------------------
+         |               Robust
+dispute1 |      Coef.   Std. Err.       z     P>|z|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+smldmtrl |  -.4102059   .0703339     -5.832   0.000      -.5480579   -.2723539
+smldeprl |  -.5149098   .2132751     -2.414   0.016      -.9329214   -.0968983
+sumigorl |  -.1602347   .0501617     -3.194   0.001      -.2585498   -.0619197
+ avgdmat |  -.2701667   .0422826     -6.390   0.000      -.3530391   -.1872943
+  avgdep |  -355.5549   39.78753     -8.936   0.000       -433.537   -277.5728
+ avgigos |  -.0439711   .0135999     -3.233   0.001      -.0706265   -.0173157
+lcaprat2 |  -.3125234   .0524853     -5.954   0.000      -.4153928    -.209654
+  allies |  -.3329942   .1635843     -2.036   0.042      -.6536136   -.0123748
+contigkb |   1.922498   .1801544     10.671   0.000       1.569401    2.275594
+logdstab |  -.5202097   .0569468     -9.135   0.000      -.6318234    -.408596
+majpower |   2.069438   .1911288     10.827   0.000       1.694833    2.444044
+ hegdefb |   17.97035   1.990625      9.027   0.000        14.0688     21.8719
+   _cons |  -.3735088   .4974645     -0.751   0.453      -1.348521    .6015036
+------------------------------------------------------------------------------
+
+. exit;
+
+end of do-file
