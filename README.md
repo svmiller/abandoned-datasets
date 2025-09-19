@@ -10,5 +10,6 @@ These are data sets I've found that are perhaps necessary for replication, but n
 - `mansfieldpevehouse2000tbtf`: Mansfield, Edward D. and Jon Pevehouse. 2000. "Trade Blocs, Trade Flows, and International Conflict." *International Organization* 54(4): 775--808.
 - `midlarsky1998de`[^convert]: Midlarsky, Manus I. 1998. “Democracy and the Environment: An Empirical Assessment.” *Journal of Peace Research* 35(3): 341–61.
 - `reiterstam1998dwiv`: Reiter, Dan and Allan C. Stam III. 1998. "Democracy, War Initiation, and Victory." *American Political Science Review* 92(2): 377--89
+- `wibbelsarce2003gtbs`: Wibbels, Erik and Moisés Arce. 2003. "Globalization, Taxation, and Burden-Shifting in Latin America" *International Organization* 57(1): 111--36.
 
 [^convert]: I had to feed this through an [online `.sav` converter](https://secure.ncounter.de/spssconverter) because the R packages I had for this didn't support this particular format.
