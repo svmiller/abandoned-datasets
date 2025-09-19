@@ -7,6 +7,7 @@ These are data sets I've found that are perhaps necessary for replication, but n
 ## Contents Include (So Far)
 
 - `benoit1996drmp`: Benoit, Kenneth. 1996. "Democracies Really Are More Pacific (in General): Reexaming Regime Type and War Involvement." *Journal of Conflict Resolution* 40(4): 636--657.
+- `blissrussett1998dtp`: Bliss, Harry and Bruce Russett. 1998. "Democratic Trading Partners: The Liberal Connection, 1962-1989." *Journal of Politics* 60(4): 1126--47.
 - `mansfieldpevehouse2000tbtf`: Mansfield, Edward D. and Jon Pevehouse. 2000. "Trade Blocs, Trade Flows, and International Conflict." *International Organization* 54(4): 775--808.
 - `midlarsky1998de`[^convert]: Midlarsky, Manus I. 1998. “Democracy and the Environment: An Empirical Assessment.” *Journal of Peace Research* 35(3): 341–61.
 - `onealrussett1997clwr`: Oneal, John R. and Bruce M. Russett. 1997. "The Classical Liberals Were Right: Democracy, Interdependence, and Conflict, 1950–1985." *International Studies Quarterly* 41(2): 267--93.
