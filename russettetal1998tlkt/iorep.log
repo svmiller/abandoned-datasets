@@ -1,0 +1,68 @@
+
+. 
+. 
+. set more off
+
+. #delimit ;
+delimiter now ;
+. * replicating the first equation;
+. probit bremdisp smorg_31 deml demh depl lrgddep3 growthl ally1r geo1 caprat
+>  , robust cluster(dyad);
+
+Iteration 0:  Log Likelihood =-3594.7906
+Iteration 1:  Log Likelihood =-3252.9591
+Iteration 2:  Log Likelihood =-3216.8467
+Iteration 3:  Log Likelihood =-3210.5817
+Iteration 4:  Log Likelihood =-3210.1807
+Iteration 5:  Log Likelihood =-3210.1789
+
+Probit Estimates                                        Number of obs =  19752
+                                                        chi2(9)       =  76.32
+                                                        Prob > chi2   = 0.0000
+Log Likelihood = -3210.1789                             Pseudo R2     = 0.1070
+
+                             (standard errors adjusted for clustering on dyad)
+------------------------------------------------------------------------------
+         |               Robust
+bremdisp |      Coef.   Std. Err.       z     P>|z|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+smorg_31 |   -.007723   .0029464     -2.621   0.009      -.0134979   -.0019482
+    deml |  -.0232697   .0074547     -3.121   0.002      -.0378807   -.0086588
+    demh |   .0170009   .0072503      2.345   0.019       .0027905    .0312112
+    depl |  -21.08675   12.29638     -1.715   0.086      -45.18722    3.013718
+lrgddep3 |  -3.915131   1.769755     -2.212   0.027      -7.383787   -.4464753
+ growthl |  -.0121995   .0074871     -1.629   0.103      -.0268739    .0024749
+  ally1r |  -.2449766     .10345     -2.368   0.018      -.4477348   -.0422184
+    geo1 |   .7458305    .117832      6.330   0.000       .5148839     .976777
+  caprat |  -.0009939   .0003993     -2.489   0.013      -.0017766   -.0002112
+   _cons |  -1.760051   .1398564    -12.585   0.000      -2.034165   -1.485938
+------------------------------------------------------------------------------
+
+Note: 27 failures and 0 successes completely determined.
+
+. regress sumorg_3 depl deml gdppcl ally1r distab ldi, robust cluster(dyad);
+
+Regression with robust standard errors                 Number of obs =   18657
+                                                       F(  6,   808) =  175.21
+                                                       Prob > F      =  0.0000
+                                                       R-squared     =  0.6278
+Number of clusters (dyad) = 809                        Root MSE      =  11.031
+
+------------------------------------------------------------------------------
+         |               Robust
+sumorg_3 |      Coef.   Std. Err.       t     P>|t|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+    depl |   348.0128   130.4649      2.667   0.008       91.92272     604.103
+    deml |   .6039891   .0629247      9.599   0.000        .480474    .7275043
+  gdppcl |   .0032761   .0001882     17.408   0.000       .0029067    .0036456
+  ally1r |   7.502536   .7415319     10.118   0.000        6.04698    8.958092
+  distab |  -.0019112   .0001391    -13.744   0.000      -.0021841   -.0016382
+     ldi |  -2.151389   1.072583     -2.006   0.045      -4.256766   -.0460121
+   _cons |   34.44875   .9102805     37.844   0.000       32.66196    36.23555
+------------------------------------------------------------------------------
+
+. * replicating the second equation;
+. 
+end of do-file
+
+. exit, clear
