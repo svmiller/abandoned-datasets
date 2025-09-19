@@ -1,0 +1,192 @@
+Analysis do-file jpr_reg run on 17 Dec 1998 at 14:57:36
+
+. /*key analyses for JPR special issue--12/98*/
+. 
+. set matsize 45
+
+. 
+. #del ;
+delimiter now ;
+. use jpr128;
+(all dyads 1950-92: 12-18-98)
+
+. describe;
+
+Contains data from jpr128.dta
+  obs:       386,556                            all dyads 1950-92: 12-18-98
+ vars:            16                            17 Dec 1998 14:56
+ size:    15,848,796 (75.4% of memory free)
+-------------------------------------------------------------------------------
+   1. statea      int    %4.0f                  COW Code for State A
+   2. stateb      int    %4.0f                  COW Code for State B
+   3. year        int    %4.0f                  Calendar Year
+   4. depa        float  %9.0g                  bilateral X+M/GDP for State A
+   5. depb        float  %9.0g                  bilateral X+M/GDP for State B
+   6. demauta     byte   %9.0g                  DEMOC-AUTOC: Polity III, 5-96
+   7. demautb     byte   %9.0g                  DEMOC-AUTOC: Polity III, 5-96
+   8. conttype    byte   %9.0g                  type of contig: 1=by land
+   9. alliesr     byte   %9.0g                  states a&b formally allied=1
+  10. onset1      byte   %9.0g                  onset of dispute in year+1
+  11. yrspeace    byte   %8.0g                  Time since last onset1
+  12. logdstab    float  %9.0g                  ln of capital to capital distan
+  13. lncaprt     float  %9.0g                  ln of COW capability ratio
+  14. imputed     byte   %9.0g                  =1 if missing trade set to 0
+  15. depa_np     float  %9.0g                  X+M/GDP, in national prices
+  16. depb_np     float  %9.0g                  X+M/GDP, in national prices
+-------------------------------------------------------------------------------
+Sorted by:  statea  stateb  year  
+
+.  summarize;
+
+Variable |     Obs        Mean   Std. Dev.       Min        Max
+---------+-----------------------------------------------------
+  statea |  386556    302.4356   209.1978          2        987  
+  stateb |  386556    596.4104   206.1538         20        990  
+    year |  386556    1976.221   10.99428       1950       1992  
+    depa |  371857     .001133   .0100117          0   1.823015  
+    depb |  367532    .0024756   .0159238          0   1.503916  
+ demauta |  340352    .1338555   7.890643        -10         10  
+ demautb |  346764   -1.976526   7.483284        -10         10  
+conttype |  386556    .1257075   .6776591          0          5  
+ alliesr |  386556    .1203189   .3253345          0          1  
+  onset1 |  368493    .0038264   .0617395          0          1  
+yrspeace |  368493    14.85574   10.59822          0         41  
+logdstab |  382786    8.243676   .7826219   1.871744   9.422935  
+ lncaprt |  385330    2.185363   1.731572          0   12.45231  
+ imputed |  219457           1          0          1          1  
+ depa_np |  370483    .0009218   .0089927          0   1.167194  
+ depb_np |  366090    .0019629   .0138997          0   1.215465  
+
+. gen jntdem=(demauta+10)*(demautb+10);
+(80374 missing values generated)
+
+. gen smldepnp=depb_np if depa_np>=depb_np & depa_np~=.;
+(91551 missing values generated)
+
+. replace smldepnp=depa_np if depb_np>depa_np & depb_np~=.;
+(59555 real changes made)
+
+. gen lrgdepnp=depa_np if depa_np>=depb_np & depa_np~=.;
+(91551 missing values generated)
+
+. replace lrgdepnp=depb_np if depb_np>depa_np & depb_np~=.;
+(59555 real changes made)
+
+. gen salience=(lrgdepnp*smldepnp)^.5;
+(31996 missing values generated)
+
+. gen symmetry=1-(lrgdepnp-smldepnp);
+(31996 missing values generated)
+
+. gen interdep=salience*symmetry;
+(31996 missing values generated)
+
+. /*calculate contiguity for states separated by less than 150 mi of water*/
+> gen contigkb=1 if conttype<=4 & conttype>0;
+(372345 missing values generated)
+
+. replace contigkb=0 if contigkb==.;
+(372345 real changes made)
+
+. gen majdyds=1 if (statea==2 | statea==200 | statea==220 | statea==365 |
+>       statea==710 | stateb==2 | stateb==200 | stateb==220 | stateb==365 |
+>       stateb==710);
+(359056 missing values generated)
+
+. replace majdyds=0 if majdyds==.;
+(359056 real changes made)
+
+. mkspline peaceyr 4 = yrspeace, marginal;
+
+. gen dyadid=(1000*statea)+stateb;
+
+. iis dyadid;
+
+. tis year;
+
+. *Table 2, col 3;
+. /*sml and lrg depnp w/ all cases*/
+> logit onset1 jntdem smldepnp lrgdepnp contigkb logdstab majdyds allies lncapr
+> t
+>       peaceyr*, cluster(dyadid);
+
+Iteration 0:  Log Likelihood =-7035.0151
+Iteration 1:  Log Likelihood = -6037.862
+Iteration 2:  Log Likelihood =-4765.8095
+Iteration 3:  Log Likelihood =-4513.2401
+Iteration 4:  Log Likelihood =-4479.8706
+Iteration 5:  Log Likelihood =-4478.8155
+Iteration 6:  Log Likelihood =-4478.8132
+Iteration 7:  Log Likelihood =-4478.8132
+
+Logit Estimates                                         Number of obs = 271262
+                                                        chi2(12)      =2166.79
+                                                        Prob > chi2   = 0.0000
+Log Likelihood = -4478.8132                             Pseudo R2     = 0.3634
+
+                           (standard errors adjusted for clustering on dyadid)
+------------------------------------------------------------------------------
+         |               Robust
+  onset1 |      Coef.   Std. Err.       z     P>|z|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+  jntdem |  -.0032185   .0006818     -4.720   0.000      -.0045548   -.0018822
+smldepnp |  -51.85309   23.39572     -2.216   0.027      -97.70784   -5.998326
+lrgdepnp |   1.520323   1.963836      0.774   0.439      -2.328724    5.369371
+contigkb |   2.459662   .2109562     11.660   0.000       2.046196    2.873129
+logdstab |  -.5923389   .0758644     -7.808   0.000      -.7410303   -.4436475
+ majdyds |   1.911798   .2295771      8.327   0.000       1.461836    2.361761
+ alliesr |  -.5321432   .1678152     -3.171   0.002       -.861055   -.2032315
+ lncaprt |  -.2306911   .0510944     -4.515   0.000      -.3308343    -.130548
+peaceyr1 |  -.2669858   .0215274    -12.402   0.000      -.3091788   -.2247928
+peaceyr2 |   .2608427   .0396174      6.584   0.000        .183194    .3384914
+peaceyr3 |   .0489918   .0436054      1.124   0.261      -.0364733    .1344569
+peaceyr4 |   .0581242   .0533297      1.090   0.276      -.0464002    .1626485
+   _cons |   .5168362   .6256441      0.826   0.409      -.7094037    1.743076
+------------------------------------------------------------------------------
+
+Note: 2 failures and 0 successes completely determined.
+
+. *Table 2, col 4;
+. xtgee onset1 jntdem smldepnp lrgdepnp contigkb logdstab majdyds allies 
+>       lncaprt, family(binomial) link(logit) corr(ar1) force robust;
+note:  some groups have fewer than 2 observations
+       not possible to estimate correlations for those groups
+       1550 groups omitted from estimation
+
+
+Iteration 1: tolerance = .08025748
+Iteration 2: tolerance = .00824793
+Iteration 3: tolerance = .00080519
+Iteration 4: tolerance = .00008547
+Iteration 5: tolerance = 9.232e-06
+Iteration 6: tolerance = 9.996e-07
+
+General estimating equation for panel data        Number of obs    =    269712
+Group and time vars:           dyadid year        Number of groups =      9579
+Link:                                logit        Obs/group, min   =         2
+Family:                           binomial                   avg   =     28.16
+Correlation:                         AR(1)                   max   =        42
+                                                  chi2(8)          =   1691.54
+Scale parameter:                         1        Prob > chi2      =    0.0000
+Pearson chi2(269703):            217300.19        Deviance         =   9842.44
+Dispersion (Pearson):             .8057018        Dispersion       =  .0364936
+
+                           (standard errors adjusted for clustering on dyadid)
+------------------------------------------------------------------------------
+         |               Robust
+  onset1 |      Coef.   Std. Err.       z     P>|z|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+  jntdem |  -.0023935   .0007506     -3.189   0.001      -.0038647   -.0009223
+smldepnp |  -115.4049   42.67746     -2.704   0.007      -199.0511   -31.75856
+lrgdepnp |   .8098192   2.724676      0.297   0.766      -4.530448    6.150086
+contigkb |   2.926091   .2279705     12.835   0.000       2.479277    3.372905
+logdstab |   -.700889   .0810297     -8.650   0.000      -.8597042   -.5420738
+ majdyds |   1.935139   .2507846      7.716   0.000       1.443611    2.426668
+ alliesr |  -.8695153   .1957154     -4.443   0.000      -1.253111   -.4859201
+ lncaprt |  -.2237293   .0613601     -3.646   0.000       -.343993   -.1034657
+   _cons |  -.3618815   .6562193     -0.551   0.581      -1.648048    .9242847
+------------------------------------------------------------------------------
+
+. exit;
+
+end of do-file
