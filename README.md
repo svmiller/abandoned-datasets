@@ -14,7 +14,8 @@ These are data sets I've found that are perhaps necessary for replication, but n
 - `onealrussett1999kp`: Oneal, John R. and Bruce M. Russett. 1999. "The Kantian Peace: The Pacific Benefits of Democracy, Interdependence, and International Organizations, 1885–1992." *World Politics* 52(1): 1--37.
 - `onealrussett2001cc`: Oneal, John R. and Bruce M. Russett. 2001. "Clear and Clean: The Fixed Effects of the Liberal Peace." *International Organization* 55(2): 469--85.
 - `onealrussett2001tp`: Oneal, John R. and Bruce M. Russett. 2001. *Triangulating Peace: Democracy, Interdependence, and International Organizations*. Norton.
-- `reiterstam1998dwiv`: Reiter, Dan and Allan C. Stam III. 1998. "Democracy, War Initiation, and Victory." *American Political Science Review* 92(2): 377--89
+- `reiterstam1998dwiv`: Reiter, Dan and Allan C. Stam III. 1998. "Democracy, War Initiation, and Victory." *American Political Science Review* 92(2): 377--89.
+- `russettetal1998tlkt`: Russett, Bruce M., John R. Oneal, and David R. Davis. 1998. "The Third Leg of the Kantian Tripod for Peace: International Organizations and Militarized Disputes, 1950–85." *International Organization* 52(3): 441--467.
 - `wibbelsarce2003gtbs`: Wibbels, Erik and Moisés Arce. 2003. "Globalization, Taxation, and Burden-Shifting in Latin America" *International Organization* 57(1): 111--36.
 
 [^convert]: I had to feed this through an [online `.sav` converter](https://secure.ncounter.de/spssconverter) because the R packages I had for this didn't support this particular format.
