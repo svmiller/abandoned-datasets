@@ -1,0 +1,176 @@
+
+Microsoft (R) Windows NT (TM) Version 4.00 DrWtsn32
+Copyright (C) 1985-1996 Microsoft Corp. All rights reserved.
+
+
+
+Application exception occurred:
+        App:  (pid=145)
+        When: 10/30/1998 @ 14:19:40.299
+        Exception number: c0000005 (access violation)
+
+*----> System Information <----*
+        Computer Name: STAT18
+        User Name: stat18
+        Number of Processors: 1
+        Processor Type: x86 Family 6 Model 1 Stepping 9
+        Windows Version: 4.0
+        Current Build: 1381
+        Current Type: Uniprocessor Free
+        Registered Organization: Yale University
+        Registered Owner: 300PL01
+
+*----> Task List <----*
+   0 Idle.exe
+   2 System.exe
+  20 smss.exe
+  26 CSRSS.exe
+  34 WINLOGON.exe
+  40 SERVICES.exe
+  43 LSASS.exe
+  67 SPOOLSS.exe
+  85 navapsvc.exe
+  83 NPSSVC.exe
+ 100 RPCSS.exe
+  97 alertsvc.exe
+ 129 NDDEAGNT.exe
+ 136 EXPLORER.exe
+ 133 OSA.exe
+ 131 keyacc32.exe
+ 127 navapw32.exe
+ 149 NTVDM.exe
+ 116 AcroRd32.exe
+ 137 HOSTEX32.exe
+ 134 wstata.exe
+ 155 notepad.exe
+ 151 wstata.exe
+  60 wstata.exe
+ 145 wstata.exe
+ 163 DRWTSN32.exe
+   0 _Total.exe
+
+(00400000 - 00400000) 
+(77f60000 - 77fbc000) dll\ntdll.dbg
+(77dc0000 - 77dfe000) dll\advapi32.dbg
+(77f00000 - 77f5e000) dll\kernel32.dbg
+(77e70000 - 77ec1000) dll\user32.dbg
+(77ed0000 - 77efc000) dll\gdi32.dbg
+(77e10000 - 77e62000) dll\rpcrt4.dbg
+(77bf0000 - 77c3f000) dll\comctl32.dbg
+(77d80000 - 77db2000) dll\comdlg32.dbg
+(77c40000 - 77d7c000) dll\shell32.dbg
+(10000000 - 10000000) 
+(77720000 - 77731000) dll\mpr.dbg
+(777f0000 - 777fc000) dll\ntlanman.dbg
+(78000000 - 78000000) 
+(77890000 - 778a3000) dll\netui0.dbg
+(77850000 - 7788a000) dll\netui1.dbg
+(77800000 - 7783a000) dll\netapi32.dbg
+(77840000 - 77849000) dll\NetRap.dbg
+(777e0000 - 777ed000) dll\samlib.dbg
+(5f810000 - 5f817000) dll\rpcltc1.dbg
+(77a40000 - 77a4c000) dll\ntshrui.dbg
+(77b20000 - 77bd2000) dll\ole32.dbg
+
+State Dump for Thread Id 0xa9
+
+eax=00000001 ebx=00a00030 ecx=00000000 edx=ffffff60 esi=00a000d0 edi=00a00030
+eip=004a0ec9 esp=0012db70 ebp=0012db88 iopl=0         nv up ei pl nz na pe cy
+cs=001b  ss=0023  ds=0023  es=0023  fs=003b  gs=0000             efl=00000203
+
+
+function: <nosymbols>
+        004a0eaf 8b5204           mov     edx,[edx+0x4]          ds:00f1e966=????????
+        004a0eb2 c1f810           sar     eax,0x10
+        004a0eb5 c1fa10           sar     edx,0x10
+        004a0eb8 48               dec     eax
+        004a0eb9 0fafd0           imul    edx,eax
+        004a0ebc 31c0             xor     eax,eax
+        004a0ebe 01d2             add     edx,edx
+        004a0ec0 eb10             jmp     004a0ed2
+        004a0ec2 8b1df4534d00     mov     ebx,[004d53f4]         ds:004d53f4=00a00030
+        004a0ec8 40               inc     eax
+FAULT ->004a0ec9 66c7041a2005     mov     word ptr [edx+ebx],0x520   ds:00a00030=0231
+        004a0ecf 83c202           add     edx,0x2
+        004a0ed2 8b5de8           mov     ebx,[ebp-0x18]         ss:0104c58e=0001c021
+        004a0ed5 8b5b04           mov     ebx,[ebx+0x4]          ds:0191ea36=00000000
+        004a0ed8 c1fb10           sar     ebx,0x10
+        004a0edb 39d8             cmp     eax,ebx
+        004a0edd 7ce3             jl      004a0ec2
+        004a0edf 6a00             push    0x0
+        004a0ee1 a148544d00       mov     eax,[004d5448]         ds:004d5448=0000000a
+        004a0ee6 6a00             push    0x0
+        004a0ee8 f7d8             neg     eax
+        004a0eea 50               push    eax
+
+*----> Stack Back Trace <----*
+
+FramePtr ReturnAd Param#1  Param#2  Param#3  Param#4  Function Name
+0012db88 004a1089 00000000 004ceacb 00000100 00000120 <nosymbols> 
+
+*----> Raw Stack Dump <----*
+0012db70  88 54 4d 00 20 01 00 00 - 88 54 4d 00 01 01 ff ff  .TM. ....TM.....
+0012db80  00 00 1e 00 00 02 03 00 - bc db 12 00 89 10 4a 00  ..............J.
+0012db90  00 00 00 00 cb ea 4c 00 - 00 01 00 00 20 01 00 00  ......L..... ...
+0012dba0  01 fe ff ff 07 00 00 00 - 0a 02 03 00 0a 02 03 00  ................
+0012dbb0  ff ff ff ff 01 d8 1e 00 - c0 ea 4c 00 e8 db 12 00  ..........L.....
+0012dbc0  62 0f 4a 00 00 00 00 00 - 00 00 00 00 e0 01 00 00  b.J.............
+0012dbd0  00 00 00 00 4f 00 00 00 - 00 00 00 00 00 00 00 00  ....O...........
+0012dbe0  00 00 00 00 07 00 00 00 - 14 dc 12 00 0e d2 48 00  ..............H.
+0012dbf0  90 91 4c 00 00 00 00 00 - 00 00 00 00 07 00 00 00  ..L.............
+0012dc00  6b d3 48 00 07 00 00 00 - 4f 00 00 00 c0 14 4c 00  k.H.....O.....L.
+0012dc10  00 00 00 00 30 dc 12 00 - 57 5b 40 00 90 91 4c 00  ....0...W[@...L.
+0012dc20  01 00 00 00 90 91 4c 00 - 02 00 00 00 01 00 00 00  ......L.........
+0012dc30  bc dc 12 00 2e 5a 40 00 - 00 00 00 00 01 00 00 00  .....Z@.........
+0012dc40  f2 3b 00 00 b5 58 40 00 - 5c 67 00 00 01 00 00 00  .;...X@.\g......
+0012dc50  cb f6 41 00 8c dc 12 00 - 01 00 00 00 8c dc 12 00  ..A.............
+0012dc60  02 00 00 00 01 00 00 00 - 90 dc 12 00 2e 5a 40 00  .............Z@.
+0012dc70  01 00 00 00 2d 00 00 00 - 01 00 00 00 b5 58 40 00  ....-........X@.
+0012dc80  00 00 00 00 04 00 00 00 - 9a 59 40 00 0a 00 40 00  .........Y@...@.
+0012dc90  bc dc 12 00 db ef 41 00 - 25 31 73 00 25 32 41 00  ......A.%1s.%2A.
+0012dca0  00 00 00 00 00 00 00 00 - c4 dc 12 00 3c 00 00 00  ............<...
+
+State Dump for Thread Id 0xa1
+
+eax=1000245d ebx=00000000 ecx=0012ff28 edx=00000000 esi=00000070 edi=009eff78
+eip=77f681ab esp=009eff5c ebp=009eff80 iopl=0         nv up ei pl nz ac po nc
+cs=001b  ss=0023  ds=0023  es=0023  fs=0038  gs=0000             efl=00000216
+
+
+function: NtWaitForSingleObject
+        77f681a0 b8c5000000       mov     eax,0xc5
+        77f681a5 8d542404         lea     edx,[esp+0x4]          ss:0190e963=00000000
+        77f681a9 cd2e             int     2e
+        77f681ab c20c00           ret     0xc
+        77f681ae 8bc0             mov     eax,eax
+
+*----> Stack Back Trace <----*
+
+FramePtr ReturnAd Param#1  Param#2  Param#3  Param#4  Function Name
+009eff80 77f04f85 00000070 00007530 00000000 100024d7 ntdll!NtWaitForSingleObject 
+009effb8 77f04f2c 00000070 008d0040 00000064 00000083 kernel32!WaitForSingleObject 
+009effec 00000000 1000245d 00000083 00000000 00000ffc kernel32!lstrcmpiW 
+00000000 00000000 00000000 00000000 00000000 00000000 !<nosymbols> 
+
+*----> Raw Stack Dump <----*
+009eff5c  ba c5 f1 77 70 00 00 00 - 00 00 00 00 78 ff 9e 00  ...wp.......x...
+009eff6c  76 4f f0 77 30 75 00 00 - 02 01 00 00 00 5d 1e ee  vO.w0u.......]..
+009eff7c  ff ff ff ff b8 ff 9e 00 - 85 4f f0 77 70 00 00 00  .........O.wp...
+009eff8c  30 75 00 00 00 00 00 00 - d7 24 00 10 70 00 00 00  0u.......$..p...
+009eff9c  30 75 00 00 40 00 8d 00 - 64 00 00 00 83 00 00 00  0u..@...d.......
+009effac  0c 00 00 00 91 00 00 00 - 0c 00 00 00 ec ff 9e 00  ................
+009effbc  2c 4f f0 77 70 00 00 00 - 40 00 8d 00 64 00 00 00  ,O.wp...@...d...
+009effcc  83 00 00 00 64 00 00 00 - c4 ff 9e 00 a4 11 00 00  ....d...........
+009effdc  ff ff ff ff 48 b0 f3 77 - 00 d2 f3 77 00 00 00 00  ....H..w...w....
+009effec  00 00 00 00 00 00 00 00 - 5d 24 00 10 83 00 00 00  ........]$......
+009efffc  00 00 00 00 fc 0f 00 00 - 00 00 00 00 00 00 a0 00  ................
+009f000c  dc 03 9f 00 10 00 00 00 - 38 0c 00 00 09 00 00 00  ........8.......
+009f001c  02 00 00 00 00 00 00 00 - dc 03 9f 00 2c 00 9f 00  ............,...
+009f002c  10 00 00 00 20 00 9f 00 - dc 03 9f 00 a4 00 00 00  .... ...........
+009f003c  19 00 00 00 4c 3a 5c 73 - 74 61 74 61 5c 77 73 74  ....L:\stata\wst
+009f004c  61 74 61 2e 65 78 65 00 - 39 00 00 00 4c 3a 5c 73  ata.exe.9...L:\s
+009f005c  74 61 74 61 5c 77 73 74 - 61 74 61 2e 65 78 65 20  tata\wstata.exe 
+009f006c  2f 6b 31 30 30 30 20 75 - 73 65 20 22 45 3a 5c 44  /k1000 use "E:\D
+009f007c  41 54 41 39 39 36 41 2e - 44 54 41 22 00 00 00 00  ATA996A.DTA"....
+009f008c  11 00 00 00 00 00 00 00 - 7c 62 4c 00 00 00 00 00  ........|bL.....
+
