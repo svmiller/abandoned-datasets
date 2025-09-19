@@ -1,0 +1,121 @@
+Analysis do-file triangle run on 24 Jan 2001 at 14:39:32
+
+/*Estimate coefficients of key regression equation in Chapter 5, Russett and Oneal's
+Triangulating Peace; see Table A5.1*/
+
+. use triangle
+(primary dataset, Oneal & Russett's Triangulating Peace: 1-23-2001)
+
+. 
+. desc
+
+Contains data from triangle.dta
+  obs:        39,996                          primary dataset, Oneal &
+                                                Russett's Triangulating Peace:
+                                                1-23-2001
+ vars:            16                          24 Jan 2001 14:39
+ size:     1,919,808 (93.9% of memory free)
+-------------------------------------------------------------------------------
+   1. statea    int    %4.0f                  COW Code for State A
+   2. stateb    int    %4.0f                  COW Code for State B
+   3. year      int    %4.0f                  Calendar Year
+   4. dependa   float  %9.0g                  a&b's bilat trade/a's GDP
+   5. dependb   float  %9.0g                  a&b's bilat trade/b's GDP
+   6. demauta   byte   %9.0g                  a's DEMOC-AUTOC score: Polity3
+   7. demautb   byte   %9.0g                  b's DEMOC-AUTOC score: Polity3
+   8. allies    byte   %9.0g                  states a&b formally allied=1
+   9. dispute1  byte   %9.0g                  militarized dispute at t+1
+  10. logdstab  float  %9.0g                  ln distance, min port-to-port
+  11. lcaprat2  float  %9.0g                  ln large/small capab ratio
+  12. smigoabi  int    %9.0g                  jnt IGO members, interpolated
+  13. opena     float  %9.0g                  a's total X+M/a's GDP
+  14. openb     float  %9.0g                  b's total X+M/b's GDP
+  15. minrpwrs  float  %9.0g                  =1 if both states in dyad are
+                                                minor powers
+  16. noncontg  float  %9.0g                  =1 if states are not contiguous
+-------------------------------------------------------------------------------
+Sorted by:  statea  stateb  year  
+
+. summ
+
+Variable |     Obs        Mean   Std. Dev.       Min        Max
+---------+-----------------------------------------------------
+  statea |   39996    248.0428   195.0379          2        900  
+  stateb |   39996    473.4786    223.771         20        950  
+    year |   39996     1957.43   27.59578       1885       1991  
+ dependa |   39996    .0068491   .0235685          0   .8484982  
+ dependb |   39996    .0175759    .040744          0   .6529297  
+ demauta |   39996    2.538379     7.7004        -10         10  
+ demautb |   39996   -1.164816   7.519143        -10         10  
+  allies |   39996    .2154965   .4111715          0          1  
+dispute1 |   39996    .0470047   .2116516          0          1  
+logdstab |   39996    7.625548   1.201279   1.871744   9.407043  
+lcaprat2 |   39996    2.978976   1.859317    .000103   9.494078  
+smigoabi |   39996    25.33373   17.56941          0        130  
+   opena |   38792    .3082745   .2506571   .0007536     1.9985  
+   openb |   37265     .323659   .2828342   .0007536     1.9985  
+minrpwrs |   39996   -.7644014   .4243776         -1          0  
+noncontg |   39996   -.3693119   .4826245         -1          0  
+
+. 
+. gen smldmat=demauta if demauta<=demautb & demautb~=.  
+(22001 missing values generated)
+
+. replace smldmat=demautb if demautb<demauta & demauta~=.  
+(22001 real changes made)
+
+. 
+. gen smldep=dependa if dependa<=dependb & dependb~=.  
+(12133 missing values generated)
+
+. replace smldep=dependb if dependb<dependa & dependa~=.  
+(12133 real changes made)
+
+.   
+. gen dyadid=(1000*statea)+stateb  
+
+.   
+. iis dyadid  
+
+. tis year  
+
+.   
+. #del ;  
+delimiter now ;
+. /*key analysis, reported in Chapter 5*/
+> xtgee dispute1 smldmat smldep smigoabi lcaprat allies noncontg logdstab minrp
+> wrs,  
+>       family(binomial) link(logit) corr(ar1) force robust nolog;
+note:  some groups have fewer than 2 observations
+       not possible to estimate correlations for those groups
+       8 groups omitted from estimation
+
+
+GEE population-averaged model                   Number of obs      =     39988
+Group and time vars:           dyadid year      Number of groups   =      1178
+Link:                                logit      Obs per group: min =         2
+Family:                           binomial                     avg =      33.9
+Correlation:                         AR(1)                     max =        90
+                                                Wald chi2(8)       =    228.11
+Scale parameter:                         1      Prob > chi2        =    0.0000
+
+                           (standard errors adjusted for clustering on dyadid)
+------------------------------------------------------------------------------
+         |             Semi-robust
+dispute1 |      Coef.   Std. Err.       z     P>|z|       [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+ smldmat |  -.0607884     .00944     -6.439   0.000      -.0792906   -.0422863
+  smldep |  -52.92334   13.40524     -3.948   0.000      -79.19714   -26.64955
+smigoabi |  -.0134695   .0042638     -3.159   0.002      -.0218264   -.0051126
+lcaprat2 |  -.3181581   .0432325     -7.359   0.000      -.4028922    -.233424
+  allies |  -.5392424   .1588729     -3.394   0.001      -.8506275   -.2278572
+noncontg |  -.9891623   .1675309     -5.904   0.000      -1.317517   -.6608078
+logdstab |  -.3762123    .064667     -5.818   0.000      -.5029572   -.2494673
+minrpwrs |  -.6472318   .1781309     -3.633   0.000      -.9963619   -.2981017
+   _cons |  -.1280416   .5360975     -0.239   0.811      -1.178773    .9226902
+------------------------------------------------------------------------------
+
+.   exit;
+
+end of do-file
+
